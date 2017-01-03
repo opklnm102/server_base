@@ -15,9 +15,6 @@ coverage:
     changes: false
     patch: true
     project: true
-  ignore:
-  - "manage.py"
-  - "*/wsgi.py"
 parsers:
   gcov:
     branch_detection:

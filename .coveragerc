@@ -1,0 +1,2 @@
+[report]
+omit = manage.py,danbi/wsgi.py,*tests*,*migrations*

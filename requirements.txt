@@ -1,0 +1,8 @@
+django<1.11
+djangorestframework
+requests
+# for test
+pytest
+pytest-django
+django-test-plus
+model_mommy

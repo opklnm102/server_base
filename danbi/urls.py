@@ -20,4 +20,6 @@ from danbi import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name='home'),
+    url(r'^404/$', views.handler404, name='error404'),
+    url(r'^500/$', views.handler500, name='error500'),
 ]

@@ -1,6 +1,7 @@
 # danbi - django project layout
 
 [![Build Status](https://travis-ci.org/DanbiEduCorp/server_base.svg?branch=master)](https://travis-ci.org/DanbiEduCorp/server_base)
+[![codecov](https://codecov.io/gh/DanbiEduCorp/server_base/branch/master/graph/badge.svg)](https://codecov.io/gh/DanbiEduCorp/server_base)
 
 
 ## 개발환경 설정

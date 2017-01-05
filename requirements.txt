@@ -1,6 +1,10 @@
 django<1.11
 djangorestframework
+markdown
+django-filter
+django-extensions
 requests
+pytz
 # for test
 pytest
 pytest-django

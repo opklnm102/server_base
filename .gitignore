@@ -181,3 +181,5 @@ $RECYCLE.BIN/
 *.lnk
 
 *.sqlite3
+
+bower_components

@@ -1,0 +1,16 @@
+{
+  "name": "danbi_server_base",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "latest",
+    "jsoneditor": "latest",
+    "dropzone": "latest"
+  },
+  "devDependencies": {}
+}

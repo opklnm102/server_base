@@ -25,6 +25,6 @@ RUN ln -s /home/service/etc/danbi.nginx /etc/nginx/sites-enabled/danbi.conf
 RUN rm /etc/nginx/sites-enabled/default
 COPY ./etc/supervisord.conf /etc/supervisor/conf.d/danbi.conf
 
-EXPOSE 8000
+EXPOSE 80
 
 CMD ["supervisord", "-n"]

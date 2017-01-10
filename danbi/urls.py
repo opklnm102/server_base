@@ -19,6 +19,8 @@ from danbi import views
 
 urlpatterns = [
     # django
+    url(r'^health.txt$', views.health_check,
+        name='health_check'),
     url(r'^admin/', admin.site.urls),
     # 3rd party
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),

@@ -128,6 +128,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "danbi", "static"),
     ("components", os.path.join(BASE_DIR, "bower_components")),
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
+
 
 # REST FRAMEWORK
 

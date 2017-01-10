@@ -1,0 +1,22 @@
+server {
+    listen 8000;
+    server_name 127.0.0.1;
+    server_name localhost;
+
+    access_log off;
+    error_log off;
+
+#    if ($http_x_forwarded_proto = 'http') {
+#        return 301 https://$host$request_uri;
+#    }
+
+    location /static {
+        alias /home/service/collected_static;
+        autoindex off;
+        access_log off;
+    }
+    location / {
+        include uwsgi_params;
+        uwsgi_pass unix:///var/run/uwsgi.sock;
+    }
+}

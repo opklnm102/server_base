@@ -13,6 +13,7 @@ ADD ./bower.json     /home/service/
 ADD ./manage.py      /home/service/
 ADD ./danbi/         /home/service/danbi/
 ADD ./sample/        /home/service/sample/
+ADD ./board/         /home/service/board/
 
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 RUN bower update --allow-root

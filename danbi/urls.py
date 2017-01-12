@@ -13,7 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.conf.urls import url, include
+from django.conf.urls.static import static
 from django.contrib import admin
 from danbi import views
 
@@ -30,4 +32,8 @@ urlpatterns = [
     url(r'^500/$', views.handler500, name='error500'),
 
     url(r'^sample/', include('sample.urls', namespace='sample')),
+    url(r'^board/', include('board.urls', namespace='board')),
+    url(r'^summernote/', include('django_summernote.urls')),
 ]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

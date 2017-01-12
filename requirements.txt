@@ -4,6 +4,8 @@ markdown
 django-filter
 django-extensions
 django-jsonfield
+django-summernote
+django-taggit
 requests
 pytz
 # for test

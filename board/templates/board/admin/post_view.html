@@ -1,0 +1,73 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static admin_list %}
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+        &rsaquo; <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a>
+        &rsaquo; <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
+        &rsaquo; <a href="{% url 'admin:board_post_change' object.id %}">{{ object.title }}</a>
+        &rsaquo; 보기
+    </div>
+{% endblock %}
+{% block extrastyle %}
+    <style>
+        #content-main dl.meta {
+            padding: 8px 10px;
+            margin-bottom: 15px;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            background: #f8f8f8;
+            color: #666;
+        }
+
+        #content-main dl.meta dd {
+            margin-right: 10px;
+        }
+
+        #content-main dl.meta dt,
+        #content-main dl.meta dd,
+        #content-main dl.meta li {
+            display: inline-block;
+        }
+
+        #content-main dl.meta ul {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div id="content-main">
+        <article>
+            <h1>{{ object.title }}</h1>
+            <dl class="meta">
+                <dt>작성자</dt>
+                <dd>
+                    <address class="user">{{ object.user.username }}</address>
+                </dd>
+                <dt>분류</dt>
+                <dd>
+                    <ul class="category">
+                        {% for category in object.categories.all %}
+                            <li class="category">{{ category }}</li>
+                        {% endfor %}
+                    </ul>
+                </dd>
+                <dt>태그</dt>
+                <dd>
+                    <ul class="tag">
+                        {% for tag in object.tags.all %}
+                            <li class="tag">#{{ tag.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </dd>
+            <dt>작성일시</dt>
+            <dd>{{ object.created|date:'Y.m.d H:i' }}</dd>
+            </dl>
+            <div class="content">
+                {{ object.content|safe }}
+            </div>
+        </article>
+    </div>
+{% endblock %}

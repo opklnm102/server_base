@@ -7,8 +7,8 @@ from board.models import Category, Post
 class TestCategoryModel(TestCase):
     def test_create_category(self):
         news = mm(Category, name='뉴스', slug='news')
-        news.save()
         breaking = mm(Category, parent=news, name='속보', slug='breaking')
+        assert news.__str__() == '뉴스'
         assert news.is_root
         assert not breaking.is_root
         assert Category.root_objects.all().count() == 1

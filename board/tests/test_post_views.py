@@ -44,7 +44,7 @@ class TestPostViewCase(TestCase):
             )
             self.response_200()
 
-        with self.login(username=self.user_other.username):
+        with self.login(username=self.user_other):
             self.get_check_200('board:post:post-list')
             self.put(
                 'board:post:post-detail', pk=post.id,

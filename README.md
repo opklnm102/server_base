@@ -1,6 +1,6 @@
 # danbi - django project layout
 
-[![Build Status](https://travis-ci.org/DanbiEduCorp/server_base.svg?branch=master)](https://travis-ci.org/DanbiEduCorp/server_base)
+[![Build Status](https://travis-ci.com/DanbiEduCorp/server_base.svg?token=poZR3KUr6AFohfxYLU1k&branch=master)](https://travis-ci.com/DanbiEduCorp/server_base)
 [![codecov](https://codecov.io/gh/DanbiEduCorp/server_base/branch/master/graph/badge.svg)](https://codecov.io/gh/DanbiEduCorp/server_base)
 
 

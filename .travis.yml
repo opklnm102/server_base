@@ -13,6 +13,7 @@ cache:
 env:
   global:
   # AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY is in travis-ci.com
+  - REGION=ap-northeast-1
   - SERVICE_NAME=danbi
   - TASK_DEFINITION=danbi
   - IMAGE_NAME=danbi
@@ -33,8 +34,8 @@ script:
 after_success:
 - bash <(curl -s https://codecov.io/bash)
 - if [ "$TRAVIS_BRANCH" == "master" ]; then
-  eval $(aws ecr get-login --region ap-northeast-1);
+  eval $(aws ecr get-login --region REGION);
   docker tag $IMAGE_NAME:latest "$REMOTE_IMAGE_URL:latest";
   docker push "$REMOTE_IMAGE_URL:latest";
-  etc/ecs-deploy.sh -c ${TASK_DEFINITION} -n ${SERVICE_NAME} -i ${REMOTE_IMAGE_URL}:latest;
+  etc/ecs-deploy.sh -r ${REGION} -c ${TASK_DEFINITION} -n ${SERVICE_NAME} -i ${REMOTE_IMAGE_URL}:latest;
   fi

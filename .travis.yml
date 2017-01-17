@@ -8,6 +8,7 @@ cache:
   directories:
   - _build
   - deps
+  - $HOME/docker
 env:
   global:
   # AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY is in travis-ci.com

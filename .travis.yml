@@ -24,7 +24,7 @@ before_install:
   gunzip -c $DOCKER_CACHE_FILE | docker load;
   fi
 install:
-- pip install flake8 codecov awscli
+- pip install flake8 codecov awscli 'pyflakes>1.4.0'
 - pip install -r requirements.txt
 script:
 - flake8 .

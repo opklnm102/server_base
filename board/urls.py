@@ -7,5 +7,5 @@ router = routers.DefaultRouter()
 router.register(r'post', PostViewSet)
 
 urlpatterns = [
-    url(r'^', include(router.urls, namespace='post')),
+    url(r'^', include(router.urls)),
 ]

@@ -26,40 +26,40 @@ class TestPostViewCase(TestCase):
             post.categories.add(category_technology)
 
     def test_list_view(self):
-        response = self.get_check_200('board:post:post-list')
+        response = self.get_check_200('board:post-list')
         assert response.json()['results'].__len__() == 3
         post = self.posts[0]
-        self.get_check_200('board:post:post-detail', pk=post.id)
+        self.get_check_200('board:post-detail', pk=post.id)
 
         with self.login(username=self.user):
             self.post(
-                'board:post:post-list',
+                'board:post-list',
                 data={'title': 'hi', 'content': 'a', 'categories': [1, 2]}
             )
             self.response_201()
             self.put(
-                'board:post:post-detail', pk=post.id,
+                'board:post-detail', pk=post.id,
                 data=json.dumps({'title': 'hi', 'content': 'b', 'categories': [2, ]}),
                 extra={'content_type': 'application/json'}
             )
             self.response_200()
 
         with self.login(username=self.user_other):
-            self.get_check_200('board:post:post-list')
+            self.get_check_200('board:post-list')
             self.put(
-                'board:post:post-detail', pk=post.id,
+                'board:post-detail', pk=post.id,
                 data={'title': 'hi', 'content': 'c', }
             )
             self.response_403()
 
         with self.login(username=self.user_staff):
             self.post(
-                'board:post:post-list',
+                'board:post-list',
                 data={'title': 'notice', 'content': "I'm staff", 'categories': [1, 2]}
             )
             self.response_201()
             response = self.put(
-                'board:post:post-detail', pk=post.id,
+                'board:post-detail', pk=post.id,
                 data=json.dumps({'title': 'hi', 'content': 'edited by staff', 'categories': [1, ]}),
                 extra={'content_type': 'application/json'}
             )

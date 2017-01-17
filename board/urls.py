@@ -4,8 +4,8 @@ from rest_framework import routers
 from .views import PostViewSet
 
 router = routers.DefaultRouter()
-router.register(r'board', PostViewSet)
+router.register(r'post', PostViewSet)
 
 urlpatterns = [
-    url(r'^post/', include(router.urls, namespace='post')),
+    url(r'^', include(router.urls, namespace='post')),
 ]

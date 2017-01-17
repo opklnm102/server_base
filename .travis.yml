@@ -19,7 +19,7 @@ env:
   - REMOTE_IMAGE_URL=800074035736.dkr.ecr.ap-northeast-1.amazonaws.com/danbi
   - DOCKER_CACHE_FILE=$HOME/docker/cache.tar
 before_install:
-- if [ -f $DOCKER_CACHE_FILE ]; then;
+- if [ -f $DOCKER_CACHE_FILE ]; then
   docker load -i $DOCKER_CACHE_FILE;
   fi
 install:

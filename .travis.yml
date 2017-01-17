@@ -8,6 +8,13 @@ cache:
   directories:
   - _build
   - deps
+env:
+  global:
+  # AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY is in travis-ci.com
+  - SERVICE_NAME=danbi
+  - TASK_DEFINITION=danbi
+  - IMAGE_NAME=danbi
+  - REMOTE_IMAGE_URL=800074035736.dkr.ecr.ap-northeast-1.amazonaws.com/danbi
 install:
 - pip install flake8 codecov awscli
 - pip install -r requirements.txt

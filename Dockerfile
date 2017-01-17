@@ -17,7 +17,7 @@ ADD ./board/         /home/service/board/
 
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 RUN bower update --allow-root
-RUN python manage.py collectstatic --noinput
+RUN python manage.py collectstatic --noinput --no-post-process
 RUN python manage.py migrate
 
 ADD ./etc/           /home/service/etc/

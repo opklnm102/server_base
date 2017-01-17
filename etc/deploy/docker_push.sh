@@ -1,7 +1,6 @@
 #! /bin/bash
 # aws login
-pip install --user awscli
-export PATH=$PATH:$HOME/.local/bin
+pip install awscli
 eval $(aws ecr get-login --region ap-northeast-1)
 
 # docker build and push

@@ -17,17 +17,19 @@ env:
   - TASK_DEFINITION=danbi
   - IMAGE_NAME=danbi
   - REMOTE_IMAGE_URL=800074035736.dkr.ecr.ap-northeast-1.amazonaws.com/danbi
+  - DOCKER_CACHE_FILE=$HOME/docker/cache.tar
+before_install:
+- if [ -f $DOCKER_CACHE_FILE ]; then;
+  docker load -i $DOCKER_CACHE_FILE;
+  fi
 install:
 - pip install flake8 codecov awscli
 - pip install -r requirements.txt
 script:
 - flake8 .
 - pytest --cov=./
-- if [[ -e $HOME/docker/image.tar ]]; then;
-  docker load -i $HOME/docker/image.tar;
-  fi
 - docker build -t $IMAGE_NAME .
-- docker save ${IMAGE_NAME}:latest > ${HOME}/docker/image.tar
+- docker save ${IMAGE_NAME}:latest > $DOCKER_CACHE_FILE
 after_success:
 - bash <(curl -s https://codecov.io/bash)
 - if [ "$TRAVIS_BRANCH" == "master" ]; then

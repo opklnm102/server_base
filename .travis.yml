@@ -24,3 +24,4 @@ script:
 after_success:
 - bash <(curl -s https://codecov.io/bash)
 - etc/deploy/docker_push.sh
+- etc/deploy/ecs_update_service.sh

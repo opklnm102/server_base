@@ -22,6 +22,7 @@ env:
   - IMAGE_NAME=danbi
   - REMOTE_IMAGE_URL=800074035736.dkr.ecr.ap-northeast-1.amazonaws.com/danbi
   - DOCKER_CACHE_FILE=$HOME/docker/cache.tar.gz
+  - DEPLOYMENT_LEVEL=staging
 before_install:
 - if [ -f $DOCKER_CACHE_FILE ]; then
   gunzip -c $DOCKER_CACHE_FILE | docker load;

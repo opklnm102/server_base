@@ -30,7 +30,7 @@ before_script:
 script:
 - flake8 .
 - pytest --cov=./
-- docker build -t $IMAGE_NAME .
+- docker build --build-arg DEPLOYMENT_LEVEL=$DEPLOYMENT_LEVEL -t $IMAGE_NAME .
 after_success:
 - bash <(curl -s https://codecov.io/bash)
 - if [ "$TRAVIS_BRANCH" == "master" ]; then

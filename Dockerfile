@@ -1,5 +1,5 @@
 FROM python:3.6
-RUN apt-get update && apt-get install -y build-essential nginx supervisor nodejs npm
+RUN apt-get update && apt-get install -y build-essential nginx supervisor nodejs npm postgresql-client
 RUN \
     pip install setuptools pip --upgrade && \
     pip install uwsgi
@@ -18,7 +18,7 @@ ADD ./board/         /home/service/board/
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 RUN bower update --allow-root
 RUN python manage.py collectstatic --noinput --no-post-process
-RUN python manage.py migrate
+RUN python manage.py migrate --settings=danbi.settings_staging
 
 ADD ./etc/           /home/service/etc/
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf

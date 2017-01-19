@@ -22,7 +22,7 @@ ADD ./danbi/         /home/service/danbi/
 ADD ./sample/        /home/service/sample/
 ADD ./board/         /home/service/board/
 # Prepare
-RUN python manage.py collectstatic --noinput --no-post-process
+RUN python manage.py collectstatic --noinput
 RUN python manage.py migrate --settings=danbi.settings_staging
 # Port
 EXPOSE 80

@@ -8,6 +8,7 @@ django-summernote
 django-taggit
 requests
 pytz
+psycopg2
 # for test
 pytest
 pytest-django

@@ -4,6 +4,9 @@ python:
 - 3.6
 services:
 - docker
+- postgresql
+addons:
+  postgresql: "9.6"
 cache:
   pip: true
   directories:
@@ -26,6 +29,11 @@ before_install:
 install:
 - pip install flake8 codecov awscli 'pyflakes>1.4.0'
 - pip install -r requirements.txt
+before_script:
+- psql -c 'create database danbi;' -U danbi_test
+test:
+  adapter: postgresql
+  database: danbi
 script:
 - flake8 .
 - pytest --cov=./

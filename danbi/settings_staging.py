@@ -17,5 +17,15 @@ except requests.exceptions.RequestException:
 if EC2_PRIVATE_IP:
     ALLOWED_HOSTS.append(EC2_PRIVATE_IP)
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'HOST': 'dev-danbi.cuqc4ixq3fe2.ap-northeast-1.rds.amazonaws.com',
+        'NAME': 'staging_danbi_server_base',
+        'USER': 'danbi_server_base',
+        'PASSWORD': 'QeW64XurIak',
+    }
+}
+
 # REST FRAMEWORK
 REST_FRAMEWORK.update({'DEFAULT_RENDERER_CLASSES': ('rest_framework.renderers.JSONRenderer',)})

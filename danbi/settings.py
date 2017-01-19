@@ -85,8 +85,9 @@ WSGI_APPLICATION = 'danbi.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'danbi_server_base',
+        'USER': 'danbi_server_base',
     }
 }
 

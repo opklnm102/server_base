@@ -90,7 +90,11 @@ DATABASES = {
         'USER': 'danbi_server_base',
     }
 }
-
+if 'TRAVIS' in os.environ:
+    DATABASES['default'].update({
+        'NAME': 'travis_ci_test',
+        'USER': 'postgres',
+    })
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators

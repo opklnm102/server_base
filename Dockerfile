@@ -21,6 +21,7 @@ ADD ./manage.py      /home/service/
 ADD ./danbi/         /home/service/danbi/
 ADD ./sample/        /home/service/sample/
 ADD ./board/         /home/service/board/
+ADD ./standalone/    /home/service/standalone/
 # Prepare
 RUN python manage.py collectstatic --noinput
 RUN python manage.py migrate --settings=danbi.settings_staging

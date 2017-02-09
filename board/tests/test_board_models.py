@@ -1,7 +1,7 @@
-from test_plus.test import TestCase
 from model_mommy.mommy import make as mm
 
 from board.models import Category, Post
+from danbi.testcases import TestCaseWithoutRouter as TestCase
 
 
 class TestCategoryModel(TestCase):

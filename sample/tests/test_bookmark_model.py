@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from model_mommy.mommy import make as mm
-from test_plus.test import TestCase
 
+from danbi.testcases import TestCaseWithoutRouter as TestCase
 from ..models import Bookmark
 
 

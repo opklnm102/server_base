@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'danbi',
     'sample',
     'board',
+    'standalone',
 ]
 
 MIDDLEWARE = [
@@ -96,16 +97,20 @@ DATABASES = {
         'HOST': '127.0.0.1',
         'NAME': 'danbi_server_base',
         'USER': 'danbi_server_base',
+    },
+    'standalone': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'HOST': '127.0.0.1',
+        'NAME': 'danbi_server_base',
+        'USER': 'danbi_server_base',
     }
 }
 
-DATABASE_ROUTERS = ['danbi.routers.ReadSlaveOnlyRouter']
+DATABASE_ROUTERS = ['standalone.routers.StandAloneRouter', 'danbi.routers.ReadSlaveOnlyRouter']
 
 if 'TRAVIS' in os.environ:
-    DATABASES['default'].update({
-        'NAME': 'travis_ci_test',
-        'USER': 'postgres',
-    })
+    for key in ['default', 'slave', 'standalone']:
+        DATABASES[key].update({'NAME': 'travis_ci_test', 'USER': 'postgres'})
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators

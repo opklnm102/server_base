@@ -1,14 +1,16 @@
 from django.contrib.auth.models import User
-from test_plus.test import TestCase
+from django.test import TestCase
+from model_mommy.mommy import make as mm
 
 from board.models import Post
-from model_mommy.mommy import make as mm
 
 
 class TestReadSlaveOnlyRouter(TestCase):
+    def setUp(self):
+        self.post = mm(Post)
+
     def test_write(self):
-        post = mm(Post)
-        assert post._state.db == 'default'
+        assert self.post._state.db == 'default'
 
     def test_read(self):
         user = User.objects.db_manager('slave').create_user(username='test')

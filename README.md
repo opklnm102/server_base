@@ -5,17 +5,30 @@
 
 
 ## 개발환경 설정
-python 3.6 가상환경 필요함. django 1.10 기준
+
 ```bash
+# redis - celery broker
+brew install redis  # 설치
+brew services start redis # redis server 실행
 
+# postgresql
+brew install postgresql  # 설치
+brew services start postgresql # postgresql server 실행
+
+# python (python 3.6 가상 환경 미리 만들어 둬야함 - pyenv 추천)
 pip install -r dev-requirements.txt
+# database migrate
 python manage.py migrate
-python manage.py runserver 
 
-# 프론트
+# front
 brew install node # 노드 설치
 npm install -g bower # bower 설치
 bower update # 프론트 라이브러리 설치
+
+# celery worker 실행
+celery -A danbi worker -l info
+# django server 실행
+python manage.py runserver
 ```
 
 ## 테스트

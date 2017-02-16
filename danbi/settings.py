@@ -180,3 +180,7 @@ SUMMERNOTE_CONFIG = {
     # Need authentication while uploading attachments.
     'attachment_require_authentication': True,
 }
+
+
+# CELERY
+CELERY_BROKER_URL = 'redis://localhost:6379/0'

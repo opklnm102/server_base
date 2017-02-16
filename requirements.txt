@@ -9,6 +9,9 @@ django-taggit
 requests
 pytz
 psycopg2
+# celery
+celery[redis]
+
 # prod env error logging
 raven
 

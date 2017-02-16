@@ -48,6 +48,7 @@ docker images
 
 # 실행
 docker run -itd danbi # background
+docker run -p 8000:80 danbi # localhost:8000 으로 접근할 수 있게 포트 열기
 
 # 실행중인 프로세스 확인
 docker ps

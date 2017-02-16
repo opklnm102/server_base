@@ -48,3 +48,6 @@ REST_FRAMEWORK.update({'DEFAULT_RENDERER_CLASSES': ('rest_framework.renderers.JS
 RAVEN_CONFIG = {
     'dsn': 'https://5c9defa873e8464faa10488658c78714:a41e218d23b14bbca41514a2cde70a79@sentry.io/139503',
 }
+
+# CELERY
+CELERY_BROKER_URL = 'redis://danbi-server-base.kqnzd3.0001.apne1.cache.amazonaws.com:6379/0'

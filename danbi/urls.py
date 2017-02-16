@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^404/$', views.handler404, name='error404'),
     url(r'^500/$', views.handler500, name='error500'),
+    url(r'^500/sentry/$', views.raise_sentry_error, name='error500-sentry'),
 
     url(r'^sample/', include('sample.urls', namespace='sample')),
     url(r'^board/', include('board.urls', namespace='board')),

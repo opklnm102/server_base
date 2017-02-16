@@ -43,3 +43,10 @@ DATABASES = {
 
 # REST FRAMEWORK
 REST_FRAMEWORK.update({'DEFAULT_RENDERER_CLASSES': ('rest_framework.renderers.JSONRenderer',)})
+
+# SENTRY
+RAVEN_CONFIG = {
+    'dsn': 'https://5c9defa873e8464faa10488658c78714:a41e218d23b14bbca41514a2cde70a79@sentry.io/139503',
+    'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
+}
+

@@ -9,6 +9,9 @@ django-taggit
 requests
 pytz
 psycopg2
+# prod env error logging
+raven
+
 # for test
 pytest
 pytest-django

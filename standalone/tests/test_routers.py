@@ -11,7 +11,6 @@ class TestStandAloneRouter(TestCase):
         try:
             standalone = StandAlone.objects.create(title='title', content='content')
             assert standalone._state.db == 'standalone'
-            print('hit')
         except ProgrammingError:
             pass
 
@@ -20,6 +19,5 @@ class TestStandAloneRouter(TestCase):
             StandAlone.objects.create(title='title', content='content')
             standalone = StandAlone.objects.first()
             assert standalone._state.db == 'standalone'
-            print('hit')
         except ProgrammingError:
             pass

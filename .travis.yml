@@ -18,6 +18,8 @@ env:
   - REGION=ap-northeast-1
   - SERVICE_NAME=danbi
   - TASK_DEFINITION=danbi
+  - CELERY_SERVICE_NAME=danbi-celery
+  - CELERY_TASK_DEFINITION=danbi-celery
   - IMAGE_NAME=danbi
   - REMOTE_IMAGE_URL=800074035736.dkr.ecr.ap-northeast-1.amazonaws.com/danbi
 install:
@@ -41,3 +43,4 @@ deploy:
     docker tag $IMAGE_NAME:latest "$REMOTE_IMAGE_URL:latest";
     docker push "$REMOTE_IMAGE_URL:latest";
     etc/ecs-deploy.sh -r $REGION -c $TASK_DEFINITION -n $SERVICE_NAME -i $REMOTE_IMAGE_URL:latest;
+    etc/ecs-deploy.sh -r $REGION -c $CELERY_TASK_DEFINITION -n $CELERY_SERVICE_NAME -i $REMOTE_IMAGE_URL:latest;

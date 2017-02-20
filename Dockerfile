@@ -15,9 +15,9 @@ ADD ./etc/           /home/service/etc/
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 RUN ln -s /home/service/etc/danbi.nginx /etc/nginx/sites-enabled/danbi.conf
 RUN rm /etc/nginx/sites-enabled/default
-COPY ./etc/supervisord.conf /etc/supervisor/conf.d/danbi.conf
 # Copy App
 ADD ./manage.py      /home/service/
+ADD ./entrypoint.sh  /home/service/
 ADD ./danbi/         /home/service/danbi/
 ADD ./sample/        /home/service/sample/
 ADD ./board/         /home/service/board/
@@ -28,4 +28,4 @@ RUN python manage.py migrate --settings=danbi.settings_staging
 # Port
 EXPOSE 80
 # Run
-CMD ["supervisord", "-n"]
+ENTRYPOINT ["./entrypoint.sh"]

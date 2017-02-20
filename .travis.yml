@@ -16,10 +16,9 @@ env:
   global:
   # AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY is in travis-ci.com
   - REGION=ap-northeast-1
+  - CLUSTER_NAME=danbi
   - SERVICE_NAME=danbi
-  - TASK_DEFINITION=danbi
   - CELERY_SERVICE_NAME=danbi-celery
-  - CELERY_TASK_DEFINITION=danbi-celery
   - IMAGE_NAME=danbi
   - REMOTE_IMAGE_URL=800074035736.dkr.ecr.ap-northeast-1.amazonaws.com/danbi
 install:
@@ -42,5 +41,5 @@ deploy:
   - eval $(aws ecr get-login --region $REGION);
     docker tag $IMAGE_NAME:latest "$REMOTE_IMAGE_URL:latest";
     docker push "$REMOTE_IMAGE_URL:latest";
-    etc/ecs-deploy.sh -r $REGION -c $TASK_DEFINITION -n $SERVICE_NAME -i $REMOTE_IMAGE_URL:latest;
-    etc/ecs-deploy.sh -r $REGION -c $CELERY_TASK_DEFINITION -n $CELERY_SERVICE_NAME -i $REMOTE_IMAGE_URL:latest;
+    etc/ecs-deploy.sh -r $REGION -c $CLUSTER_NAME -n $SERVICE_NAME -i $REMOTE_IMAGE_URL:latest;
+    etc/ecs-deploy.sh -r $REGION -c $CLUSTER_NAME -n $CELERY_SERVICE_NAME -i $REMOTE_IMAGE_URL:latest;

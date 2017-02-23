@@ -15,12 +15,22 @@ SQL = {
         TABLE_NAME['copy']),
     'copy': "INSERT INTO {} SELECT * FROM {};".format(
         TABLE_NAME['copy'], TABLE_NAME['origin']),
+    'count': "SELECT COUNT(*) FROM {};".format(
+        TABLE_NAME['copy']),
 }
 
 
-def table_exists(cursor):
-    cursor.execute(SQL['exists_copy'])
+def cursor_fetchone_first(cursor, sql):
+    cursor.execute(sql)
     return cursor.fetchone()[0]
+
+
+def table_exists(cursor):
+    return cursor_fetchone_first(cursor, SQL['exists_copy'])
+
+
+def table_row_count(cursor):
+    return cursor_fetchone_first(cursor, SQL['count'])
 
 
 def dump_post(debug=False):
@@ -38,7 +48,10 @@ def dump_post(debug=False):
     p('board_post_copy table 비우기')
     cursor.execute(SQL['copy'])
     p('board_post 에서 값 가져오기')
+    count = table_row_count(cursor)
+    p('{} 개 덤프 완료'.format(count))
     cursor.close()
+    return count
 
 
 class Command(BaseCommand):

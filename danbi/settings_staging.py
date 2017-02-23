@@ -50,4 +50,4 @@ RAVEN_CONFIG = {
 }
 
 # CELERY
-CELERY_BROKER_URL = 'redis://danbi-server-base.kqnzd3.0001.apne1.cache.amazonaws.com:6379/0'
+CELERY_BROKER_URL = 'redis://server-base-broker.kqnzd3.0001.apne1.cache.amazonaws.com:6379/0'

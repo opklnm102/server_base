@@ -184,3 +184,32 @@ SUMMERNOTE_CONFIG = {
 
 # CELERY
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
+
+
+# LOGGING
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'default': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(funcName)s "%(message)s"'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_DIR, 'info.log'),
+            'maxBytes': 1024 * 1024 * 10,
+            'backupCount': 10,
+            'formatter': 'default',
+        },
+    },
+    'loggers': {
+        'board.tasks': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}

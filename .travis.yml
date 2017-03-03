@@ -6,7 +6,7 @@ services:
 - docker
 - postgresql
 addons:
-  postgresql: "9.5"
+  postgresql: "9.6"
 cache:
   pip: true
   directories:
